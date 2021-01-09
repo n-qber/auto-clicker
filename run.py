@@ -25,9 +25,10 @@ def stop_clicking():
 def toggle_clicking():
     #print("[*] Toggle clicking")
     global CLICK
-    CLICK = not CLICK
     if CLICK:
-        Thread(target=start_clicking).start()
+        CLICK = False
+        return
+    Thread(target=start_clicking).start()
 
 press = {"c": lambda: Thread(target=start_clicking).start(),
          "t": lambda: Thread(target=toggle_clicking).start()}
